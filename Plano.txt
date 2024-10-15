@@ -1,0 +1,101 @@
+Plano para o Projeto:
+Estrutura básica:
+Backend (Flask):
+
+Gerenciamento de rotas para diferentes seções (Vendas, Estoque, Compras, Financeiro).
+Conexão com o banco de dados MySQL.
+Lógica de CRUD (Create, Read, Update, Delete) para cada módulo.
+Banco de Dados (MySQL):
+
+Criação de tabelas para Vendas, Estoque, Compras e Financeiro.
+Relações entre tabelas (ex.: Produto, Cliente, Fornecedor).
+Frontend (Bootstrap):
+
+Layout simples e responsivo para as páginas de gerenciamento.
+Formulários para inserção de dados e tabelas para visualização.
+Módulos do Sistema:
+Vendas:
+
+Registro de vendas realizadas.
+Exibição de histórico de vendas.
+Associação com clientes e produtos.
+Estoque:
+
+Registro de produtos.
+Controle de quantidade em estoque.
+Atualização automática com base em vendas e compras.
+Compras:
+
+Registro de compras de fornecedores.
+Associação de compras com produtos e fornecedores.
+Financeiro:
+
+Controle de fluxo de caixa (entrada e saída).
+Relatórios financeiros simples.
+Pseudocódigo detalhado:
+Configuração do ambiente:
+
+Criar uma aplicação Flask.
+Instalar dependências:
+Flask
+Flask-MySQLdb para integração com o MySQL
+Bootstrap para frontend
+Configurar as rotas principais para o frontend.
+Configurar conexão com banco de dados MySQL.
+Banco de Dados:
+
+Criar tabelas:
+vendas (id, cliente_id, produto_id, quantidade, valor_total, data_venda)
+produtos (id, nome, quantidade_estoque, preco_venda)
+compras (id, fornecedor_id, produto_id, quantidade, valor_total, data_compra)
+financeiro (id, tipo, valor, descricao, data)
+clientes (id, nome, telefone, email)
+fornecedores (id, nome, telefone, email)
+Rotas principais no Flask:
+
+/: Página inicial.
+/vendas: CRUD de Vendas.
+/estoque: CRUD de Produtos.
+/compras: CRUD de Compras.
+/financeiro: Visualização de relatórios financeiros.
+Templates com Bootstrap:
+
+Criar templates básicos para cada módulo.
+Usar formulários para inserção de dados e tabelas para exibição.
+
+erp_sistema/
+│
+├── app/
+│   ├── __init__.py          # Inicializa a aplicação Flask
+│   ├── config.py            # Configurações da aplicação (MySQL, chaves secretas, etc.)
+│   ├── models.py            # Definição das tabelas do banco de dados
+│   ├── forms.py             # Definição dos formulários usando Flask-WTF
+│   ├── routes/
+│   │   ├── __init__.py      # Importa todas as rotas
+│   │   ├── vendas.py        # Rotas relacionadas ao módulo de Vendas
+│   │   ├── estoque.py       # Rotas relacionadas ao módulo de Estoque
+│   │   ├── compras.py       # Rotas relacionadas ao módulo de Compras
+│   │   ├── financeiro.py    # Rotas relacionadas ao módulo de Financeiro
+│   └── static/
+│       ├── css/             # Arquivos CSS
+│       ├── js/              # Arquivos JS
+│   └── templates/
+│       ├── base.html        # Template base com Bootstrap (navbar, rodapé)
+│       ├── vendas/          # Templates relacionados às Vendas
+│       │   ├── index.html
+│       │   └── form.html
+│       ├── estoque/         # Templates relacionados ao Estoque
+│       │   ├── index.html
+│       │   └── form.html
+│       ├── compras/         # Templates relacionados às Compras
+│       │   ├── index.html
+│       │   └── form.html
+│       └── financeiro/      # Templates relacionados ao Financeiro
+│           ├── index.html
+│           └── form.html
+│
+├── migrations/              # Diretório para controle de migrações do banco de dados (opcional com Flask-Migrate)
+├── venv/                    # Ambiente virtual para as dependências do projeto
+├── run.py                   # Arquivo principal para iniciar o servidor Flask
+├── requirements.txt         # Arquivo com as dependências do projeto
+└── README.md                # Arquivo de documentação do projeto

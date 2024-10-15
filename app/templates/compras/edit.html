@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Compra{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Editar Compra</h1>
+
+    <form method="POST" action="{{ url_for('compras.edit', id=compra.id) }}">
+        <div class="mb-3">
+            <label for="fornecedor_id" class="form-label">Fornecedor</label>
+            <select name="fornecedor_id" id="fornecedor_id" class="form-select" required>
+                {% for fornecedor in fornecedores %}
+                <option value="{{ fornecedor.id }}" {% if fornecedor.id == compra.fornecedor_id %}selected{% endif %}>{{ fornecedor.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="produto_id" class="form-label">Produto</label>
+            <select name="produto_id" id="produto_id" class="form-select" required>
+                {% for produto in produtos %}
+                <option value="{{ produto.id }}" {% if produto.id == compra.produto_id %}selected{% endif %}>{{ produto.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="quantidade" class="form-label">Quantidade</label>
+            <input type="number" name="quantidade" id="quantidade" class="form-control" value="{{ compra.quantidade }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="valor_total" class="form-label">Valor Total</label>
+            <input type="text" name="valor_total" id="valor_total" class="form-control" value="{{ compra.valor_total }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="data_compra" class="form-label">Data da Compra</label>
+            <input type="date" name="data_compra" id="data_compra" class="form-control" value="{{ compra.data_compra }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <a href="{{ url_for('compras.index') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

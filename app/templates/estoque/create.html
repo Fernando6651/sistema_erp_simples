@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar Produto{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Adicionar Produto ao Estoque</h1>
+
+    <form method="POST" action="{{ url_for('estoque.create') }}">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome do Produto</label>
+            <input type="text" name="nome" id="nome" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="quantidade_estoque" class="form-label">Quantidade em Estoque</label>
+            <input type="number" name="quantidade_estoque" id="quantidade_estoque" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="preco_venda" class="form-label">Preço de Venda</label>
+            <input type="text" name="preco_venda" id="preco_venda" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{{ url_for('estoque.index') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

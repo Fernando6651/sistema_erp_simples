@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Fornecedor{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Editar Fornecedor</h1>
+
+    <form method="POST" action="{{ url_for('fornecedores.editar_fornecedor', id=fornecedor.id) }}">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome do Fornecedor</label>
+            <input type="text" name="nome" id="nome" class="form-control" value="{{ fornecedor.nome }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="text" name="telefone" id="telefone" class="form-control" value="{{ fornecedor.telefone }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" value="{{ fornecedor.email }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <a href="{{ url_for('fornecedores.criar_fornecedor') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

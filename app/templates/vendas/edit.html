@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Venda{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Editar Venda</h1>
+
+    <form method="POST" action="{{ url_for('vendas.edit', id=venda.id) }}">
+        <div class="mb-3">
+            <label for="cliente_id" class="form-label">Cliente</label>
+            <select name="cliente_id" id="cliente_id" class="form-select" required>
+                {% for cliente in clientes %}
+                <option value="{{ cliente.id }}" {% if cliente.id == venda.cliente_id %}selected{% endif %}>{{ cliente.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="produto_id" class="form-label">Produto</label>
+            <select name="produto_id" id="produto_id" class="form-select" required>
+                {% for produto in produtos %}
+                <option value="{{ produto.id }}" {% if produto.id == venda.produto_id %}selected{% endif %}>{{ produto.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="quantidade" class="form-label">Quantidade</label>
+            <input type="number" name="quantidade" id="quantidade" class="form-control" value="{{ venda.quantidade }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="valor_total" class="form-label">Valor Total</label>
+            <input type="text" name="valor_total" id="valor_total" class="form-control" value="{{ venda.valor_total }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="data_venda" class="form-label">Data da Venda</label>
+            <input type="date" name="data_venda" id="data_venda" class="form-control" value="{{ venda.data_venda }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <a href="{{ url_for('vendas.index') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

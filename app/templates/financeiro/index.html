@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Relatório Financeiro{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Relatório Financeiro</h1>
+    <a href="{{ url_for('financeiro.create') }}" class="btn btn-primary mb-3">Adicionar Transação</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Valor</th>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transacao in transacoes %}
+            <tr>
+                <td>{{ transacao.id }}</td>
+                <td>{{ transacao.tipo }}</td>
+                <td>{{ transacao.valor }}</td>
+                <td>{{ transacao.descricao }}</td>
+                <td>{{ transacao.data }}</td>
+                <td>
+                    <a href="{{ url_for('financeiro.edit', id=transacao.id) }}" class="btn btn-warning">Editar</a>
+                    <a href="{{ url_for('financeiro.delete', id=transacao.id) }}" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

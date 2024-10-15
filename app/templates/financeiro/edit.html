@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Transação Financeira{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Editar Transação Financeira</h1>
+
+    <form method="POST" action="{{ url_for('financeiro.edit', id=transacao.id) }}">
+        <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo de Transação</label>
+            <select name="tipo" id="tipo" class="form-select" required>
+                <option value="Entrada" {% if transacao.tipo == 'Entrada' %}selected{% endif %}>Entrada</option>
+                <option value="Saída" {% if transacao.tipo == 'Saída' %}selected{% endif %}>Saída</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="valor" class="form-label">Valor</label>
+            <input type="text" name="valor" id="valor" class="form-control" value="{{ transacao.valor }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input type="text" name="descricao" id="descricao" class="form-control" value="{{ transacao.descricao }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="data" class="form-label">Data da Transação</label>
+            <input type="date" name="data" id="data" class="form-control" value="{{ transacao.data }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <a href="{{ url_for('financeiro.index') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Sistema ERP{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Ajustar o espaçamento específico entre cartões */
+.row .col {
+    margin-bottom: 10px; /* Ajuste mais preciso no espaçamento */
+}
+
+h1 {
+    margin-bottom: 40px; /* Aumenta o espaço entre o título e os cartões */
+}
+
+.card {
+    padding: 15px; /* Ajuste no preenchimento dos cartões */
+}
+</style>
+<div class="container mt-5">
+    <h1 class="mb-5 text-center">Bem-vindo ao Sistema ERP Simples</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 gx-3 gy-3"> <!-- gap horizontal (gx) e vertical (gy) -->
+        <!-- Card para Clientes -->
+        <div class="col d-flex align-items-stretch">
+            <div class="card text-center card-equal h-100 d-flex flex-column shadow-sm">
+                <div class="card-body flex-grow-1">
+                    <h5 class="card-title"><i class="bi bi-people"></i> Clientes</h5>
+                    <p class="card-text" style="font-size: 1.2rem;">Gerencie seus clientes e mantenha suas informações atualizadas.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('clientes.listar_clientes') }}" class="btn btn-outline-primary w-100">Ver Clientes</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card para Fornecedores -->
+        <div class="col d-flex align-items-stretch">
+            <div class="card text-center card-equal h-100 d-flex flex-column shadow-sm">
+                <div class="card-body flex-grow-1">
+                    <h5 class="card-title"><i class="bi bi-building"></i> Fornecedores</h5>
+                    <p class="card-text" style="font-size: 1.2rem;">Controle os fornecedores do seu negócio.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('fornecedores.listar_fornecedores') }}" class="btn btn-outline-primary w-100">Ver Fornecedores</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card para Vendas -->
+        <div class="col d-flex align-items-stretch">
+            <div class="card text-center card-equal h-100 d-flex flex-column shadow-sm">
+                <div class="card-body flex-grow-1">
+                    <h5 class="card-title"><i class="bi bi-cart"></i> Vendas</h5>
+                    <p class="card-text" style="font-size: 1.2rem;">Gerencie as vendas e acompanhe as transações do seu negócio.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('vendas.index') }}" class="btn btn-outline-primary w-100">Ver Vendas</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card para Estoque -->
+        <div class="col d-flex align-items-stretch">
+            <div class="card text-center card-equal h-100 d-flex flex-column shadow-sm">
+                <div class="card-body flex-grow-1">
+                    <h5 class="card-title"><i class="bi bi-box"></i> Estoque</h5>
+                    <p class="card-text" style="font-size: 1.2rem;">Mantenha o controle de produtos e materiais no estoque.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('estoque.index') }}" class="btn btn-outline-primary w-100">Ver Estoque</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card para Compras -->
+        <div class="col d-flex align-items-stretch">
+            <div class="card text-center card-equal h-100 d-flex flex-column shadow-sm">
+                <div class="card-body flex-grow-1">
+                    <h5 class="card-title"><i class="bi bi-bag"></i> Compras</h5>
+                    <p class="card-text" style="font-size: 1.2rem;">Gerencie suas compras e seus fornecedores.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('compras.index') }}" class="btn btn-outline-primary w-100">Ver Compras</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card para Financeiro -->
+        <div class="col d-flex align-items-stretch">
+            <div class="card text-center card-equal h-100 d-flex flex-column shadow-sm">
+                <div class="card-body flex-grow-1">
+                    <h5 class="card-title"><i class="bi bi-currency-dollar"></i> Financeiro</h5>
+                    <p class="card-text" style="font-size: 1.2rem;">Gerencie as entradas e saídas financeiras do seu negócio.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('financeiro.index') }}" class="btn btn-outline-primary w-100">Ver Financeiro</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

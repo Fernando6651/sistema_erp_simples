@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Fornecedores{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Fornecedores</h1>
+    <a href="{{ url_for('fornecedores.criar_fornecedor') }}" class="btn btn-primary mb-3">Adicionar Fornecedor</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fornecedor in fornecedores %}
+            <tr>
+                <td>{{ fornecedor.id }}</td>
+                <td>{{ fornecedor.nome }}</td>
+                <td>{{ fornecedor.telefone }}</td>
+                <td>{{ fornecedor.email }}</td>
+                <td>
+                    <a href="{{ url_for('fornecedores.editar_fornecedor', id=fornecedor.id) }}" class="btn btn-warning">Editar</a>
+                    <a href="{{ url_for('fornecedores.deletar_fornecedor', id=fornecedor.id) }}" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+</div>
+{% endblock %}

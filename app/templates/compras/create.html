@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar Compra{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Adicionar Compra</h1>
+
+    <form method="POST" action="{{ url_for('compras.create') }}">
+        <div class="mb-3">
+            <label for="fornecedor_id" class="form-label">Fornecedor</label>
+            <select name="fornecedor_id" id="fornecedor_id" class="form-select" required>
+                <option value="">Selecione um fornecedor</option>
+                {% for fornecedor in fornecedores %}
+                <option value="{{ fornecedor.id }}">{{ fornecedor.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="produto_id" class="form-label">Produto</label>
+            <select name="produto_id" id="produto_id" class="form-select" required>
+                <option value="">Selecione um produto</option>
+                {% for produto in produtos %}
+                <option value="{{ produto.id }}">{{ produto.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="quantidade" class="form-label">Quantidade</label>
+            <input type="number" name="quantidade" id="quantidade" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="valor_total" class="form-label">Valor Total</label>
+            <input type="text" name="valor_total" id="valor_total" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="data_compra" class="form-label">Data da Compra</label>
+            <input type="date" name="data_compra" id="data_compra" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{{ url_for('compras.index') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Compras{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Compras</h1>
+    <a href="{{ url_for('compras.create') }}" class="btn btn-primary mb-3">Adicionar Compra</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fornecedor</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Valor Total</th>
+                <th>Data da Compra</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for compra in compras %}
+            <tr>
+                <td>{{ compra.id }}</td>
+                <td>{{ compra.fornecedor_nome }}</td> <!-- Assumindo que estamos fazendo JOIN com a tabela de fornecedores -->
+                <td>{{ compra.produto_nome }}</td> <!-- Assumindo que estamos fazendo JOIN com a tabela de produtos -->
+                <td>{{ compra.quantidade }}</td>
+                <td>{{ compra.valor_total }}</td>
+                <td>{{ compra.data_compra }}</td>
+                <td>
+                    <a href="{{ url_for('compras.edit', id=compra.id) }}" class="btn btn-warning">Editar</a>
+                    <a href="{{ url_for('compras.delete', id=compra.id) }}" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

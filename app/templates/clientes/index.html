@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Clientes{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Clientes</h1>
+    <a href="{{ url_for('clientes.criar_cliente') }}" class="btn btn-primary mb-3">Adicionar Cliente</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.id }}</td>
+                <td>{{ cliente.nome }}</td>
+                <td>{{ cliente.telefone }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>
+                    <a href="{{ url_for('clientes.editar_cliente', id=cliente.id) }}" class="btn btn-warning">Editar</a>
+                    <a href="{{ url_for('clientes.deletar_cliente', id=cliente.id) }}" class="btn btn-danger"
+                        onclick="return confirm('Tem certeza que deseja excluir este cliente?');">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
